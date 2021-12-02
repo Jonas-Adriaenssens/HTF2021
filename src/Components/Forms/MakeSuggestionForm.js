@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { useSettings } from "../context/useSettings";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -15,74 +15,62 @@ import axios from "axios";
 
 export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
   const { settings } = useSettings();
-  const clues  = useContext(CluesContext)
-  
+  const clues  = useContext(CluesContext);
+
+  const [weapon, setWeapon] = useState(0);
+  const [suspect, setSuspect] = useState(0);
+
   const filteredClues = (filterWord) => {
     return clues.filter(clue => clue.type == filterWord)
   }
 
   const makeSuggestion = () => {
 
-    console.log(gameKey)
-    console.log(selectedRoom)
-    
 
-    // bodyFormData = {
-    //   "room" : " " ,
-    //   "weapon" : " " , 
-    //   " suspect": " "
+    const bodyFormData = {
+      "room" : selectedRoom,
+      "weapon" : weapon , 
+      "suspect": suspect
+    }
 
+    console.log("suspect: ");
+    console.log(suspect)
 
-    // }
-
-
-    // axios({
-    //   method: "post",
-    //   url: "https://htf-2021.calibrate.be/api/cluedo/guess",
-    //   data: bodyFormData,
-    // })
-    //   .then(function (response) {
-    //     //handle success
-    //     console.log(response);
-    //   })
-    //   .catch(function (response) {
-    //     //handle error
-    //     console.log(response);
-    //   });
-
-    // axios.post("https://htf-2021.calibrate.be/api/cluedo/new-game" , {
-    //   auth: {
-    //     username: "mortarcycle",
-    //     password: "hackthefuture"
-    //   }
-    // }).then((res)=>{
-
-    //   console.log(res.data.key)
-    
-    //   onStart(res.data.key)
-
-    // }).catch(err => {
-    //   console.log(err)
-    // }); 
-
-
+    axios({
+      method: "post",
+      url: "https://htf-2021.calibrate.be/api/cluedo/guess?key=" + gameKey,
+      data: bodyFormData,
+      auth: {
+        username: "mortarcycle",
+        password: "hackthefuture"
+      }
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      });
 
   }
+
 
   return (
     <div>
       <h2>Maak een suggestie</h2>
     <h4>Weapon: </h4>
-    <select>
+    <select onChange={(e) => setWeapon(e.target.value)}>
         {filteredClues("weapon").map(clue =>
-           <option key={clue.id} value={clue.title}>{clue.title}</option>
+           <option key={clue.id} value={clue.id}>{clue.title}</option>
         )};
     </select>
 
     <h4>Suspect: </h4>
-    <select>
+    <select onChange={(e) => setSuspect(e.target.value)} >
         {filteredClues("suspect").map(clue =>
-           <option key={clue.id} value={clue.title}>{clue.title}</option>
+           <option key={clue.id} value={clue.id}>{clue.title}</option>
         )};
     </select>
 
