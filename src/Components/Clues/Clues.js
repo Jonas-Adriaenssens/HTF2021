@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 /*
    AANWIJZINGEN
    ------------
    Lijst hier de kamers, wapens en verdachten op.
 */
+
+
+
+
 
 const Clues = () => {
   return (

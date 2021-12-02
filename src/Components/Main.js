@@ -6,6 +6,7 @@ import Intro from "./Intro";
 import Cluedo from "./Cluedo/Cluedo";
 import Clues from "./Clues/Clues";
 import { useSettings } from "./context/useSettings";
+import axios from "axios";
 
 export const CluesContext = React.createContext();
 
@@ -36,7 +37,49 @@ export const Main = () => {
 
   useEffect(() => {
     if (settings) {
+      console.log(settings)
       // De settings zijn geladen, haal hier de aanwijzingen op en bewaar ze in de state (setClues)
+      console.log("userename : " + settings.auth.username)
+      console.log("basurl : " + settings.baseURL)
+      //TODO: fix => settings are undefined ? => get rid of hardcoded username and password
+
+      axios.get("https://htf-2021.calibrate.be/api/cluedo/clues" , {
+      auth: {
+        username: "mortarcycle",
+        password: "hackthefuture"
+      }
+    }).then((res)=>{
+
+      const clues = res.data; 
+
+      setClues(clues);
+
+      console.log(res.data)
+
+      console.log("clues: " + clues.map(clue => clue.id))
+
+      // clues.forEach(clue => 
+      //   setClues(
+      //     {
+      //       type: clue.type,
+      //       id: clue.id,
+      //       title: clue.title,
+      //     }
+      //   )
+      //   )
+      //   console.log(clue.type)
+      // });
+
+ 
+    }).catch(err => {
+      console.log(err)
+    }); 
+    
+    
+    
+
+
+
     }
   }, [settings]);
 
