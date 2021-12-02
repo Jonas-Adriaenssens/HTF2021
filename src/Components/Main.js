@@ -43,10 +43,10 @@ export const Main = () => {
       console.log("basurl : " + settings.baseURL)
       //TODO: fix => settings are undefined ? => get rid of hardcoded username and password
 
-      axios.get(settings.url.clues , {
+      axios.get("https://htf-2021.calibrate.be/api/cluedo/clues" , {
       auth: {
-        username: settings.auth.username,
-        password: settings.auth.password
+        username: "mortarcycle",
+        password: "hackthefuture"
       }
     }).then((res)=>{
 
@@ -57,19 +57,6 @@ export const Main = () => {
       console.log(res.data)
 
       console.log("clues: " + clues.map(clue => clue.id))
-
-      // clues.forEach(clue => 
-      //   setClues(
-      //     {
-      //       type: clue.type,
-      //       id: clue.id,
-      //       title: clue.title,
-      //     }
-      //   )
-      //   )
-      //   console.log(clue.type)
-      // });
-
  
     }).catch(err => {
       console.log(err)
