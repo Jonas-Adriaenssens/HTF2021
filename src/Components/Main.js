@@ -39,14 +39,14 @@ export const Main = () => {
     if (settings) {
       console.log(settings)
       // De settings zijn geladen, haal hier de aanwijzingen op en bewaar ze in de state (setClues)
-      console.log("userename : " + settings.auth.username)
+      console.log(process.env.REACT_APP_BASE_URL)
       console.log("basurl : " + settings.baseURL)
       //TODO: fix => settings are undefined ? => get rid of hardcoded username and password
 
-      axios.get("https://htf-2021.calibrate.be/api/cluedo/clues" , {
+      axios.get(settings.url.clues , {
       auth: {
-        username: "mortarcycle",
-        password: "hackthefuture"
+        username: settings.auth.username,
+        password: settings.auth.password
       }
     }).then((res)=>{
 
@@ -75,10 +75,6 @@ export const Main = () => {
       console.log(err)
     }); 
     
-    
-    
-
-
 
     }
   }, [settings]);
