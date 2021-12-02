@@ -26,7 +26,7 @@ export class SuspectItem extends Component {
 
 
 
-    if (this.props.clue.type == "weapon"){
+    if (this.props.clue.type == "suspect"){
 
     return (
       <div style={this.getStyle()}>
