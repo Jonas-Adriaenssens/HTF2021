@@ -15,12 +15,6 @@ export class RoomItem extends Component {
     };
   };
   
-  
-  componentDidMount = (props) => {
-    console.log(this.props.title);
-  };
-  
-
 
   render() {
 
@@ -33,9 +27,7 @@ export class RoomItem extends Component {
         <h4>Room</h4> 
         <p>ID: {this.props.clue.id}</p>
         <p>Title: {this.props.clue.title}</p>
-        <p>Description: {this.props.clue.description}</p>
-        <p>Color: {this.props.clue.color}</p>
-        <img src={this.props.clue.image} />
+        <img src={"https://htf-2021.calibrate.be" + this.props.clue.image} />
 
       </div>
     );

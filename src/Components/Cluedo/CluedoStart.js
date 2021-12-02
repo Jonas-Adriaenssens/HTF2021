@@ -34,10 +34,17 @@ const CluedoStart = ({ onStart }) => {
   };
 
   return (
+
+    <div>
+      <h3>Teeeeest</h3>
+      <button>I WIN</button>
+
     <div className={"file full"}>
       <h2>Cluedo</h2>
       <Button onClick={startGame} value="Start een nieuw spel" />
     </div>
+    </div>
+
   );
 };
 

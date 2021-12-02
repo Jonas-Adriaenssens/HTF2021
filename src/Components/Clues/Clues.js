@@ -17,7 +17,8 @@ import WeaponItem from "./WeaponItem";
 const Clues = () => {
   const clues  = useContext(CluesContext)
 
-  return (
+  return clues ? (
+
     <div className="full file">
       <h2>Aanwijzingen</h2>
       <div>Lijst hier de kamers, wapens en verdachten op.</div>
@@ -49,7 +50,7 @@ const Clues = () => {
       </div>
 
     </div>
-  );
+  ) : null;
 };
 
 export default Clues;

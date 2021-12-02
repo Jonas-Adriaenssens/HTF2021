@@ -19,7 +19,7 @@ export const Mansion = ({ onSelectRoom }) => {
 
       
         {clues.map((clue) => (
-         <div key={clue.id} onClick={onSelectRoom}>
+         <div key={clue.id} onClick={() => onSelectRoom(clue.id)}>
           <RoomItem  key={clue.id} clue={clue}/>
          </div>
         )
