@@ -18,14 +18,17 @@ const Cluedo = () => {
 
   return settings ? (
     <Switch>
-      {!gameKey && <CluedoStart onStart={setKey} />}
+      {!gameKey && <CluedoStart onStart={setKey} /> }
       {gameOver && <GameOver outcome={gameOver} />}
-      <CluedoActive
+     
+     <CluedoActive
         gameKey={gameKey}
         onEndGame={handleEndGame}
         onArrest={setGameOver}
       />
     </Switch>
+  
+  
   ) : null;
 };
 

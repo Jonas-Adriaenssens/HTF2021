@@ -13,13 +13,9 @@ import WeaponItem from "./WeaponItem";
 */
 
 
-
+//TODO: ADD CHECK IF USECONTEXT IS LOADED
 const Clues = () => {
-
-
-
   const clues  = useContext(CluesContext)
-
 
   return (
     <div className="full file">
@@ -49,13 +45,9 @@ const Clues = () => {
             <RoomItem  key={clue.id} clue={clue}/>
           )
        )}
-        
-
       
       </div>
 
-      {/* <div>{clues.map(clue => clue.id)}</div> */}
-  
     </div>
   );
 };

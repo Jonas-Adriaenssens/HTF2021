@@ -45,13 +45,6 @@ export class WeaponItem extends Component {
   }
 }
 
-// // PropTypes
-// TodoItem.propTypes = {
-//   todo: PropTypes.object.isRequired,
-//   markComplete: PropTypes.func.isRequired,
-//   delTodo: PropTypes.func.isRequired,
-// };
-
 const btnStyle = {
   background: "#ff0000",
   color: "#fff",
