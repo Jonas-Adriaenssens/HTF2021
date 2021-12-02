@@ -1,6 +1,8 @@
 import React, {useContext} from "react";
 import { CluesContext } from "../Main";
 import { RoomItem } from "./RoomItem";
+import SuspectItem from "./SuspectItem";
+import WeaponItem from "./WeaponItem";
 
 
 
@@ -26,10 +28,18 @@ const Clues = () => {
 
       <div>
         <h3>Weapons</h3>
+        {clues.map((clue) => (
+            <WeaponItem  key={clue.id} clue={clue}/>
+          )
+       )}
       </div>
 
       <div>
         <h3>Suspect</h3>
+        {clues.map((clue) => (
+            <SuspectItem  key={clue.id} clue={clue}/>
+          )
+       )}
       </div>
 
       <div>
@@ -38,7 +48,6 @@ const Clues = () => {
         {clues.map((clue) => (
             <RoomItem  key={clue.id} clue={clue}/>
           )
-
        )}
         
 
