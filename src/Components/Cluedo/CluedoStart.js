@@ -36,9 +36,9 @@ const CluedoStart = ({ onStart }) => {
   return (
 
     <div>
-      <h3>Teeeeest</h3>
-      <button>I WIN</button>
-
+      <h2>Winner button: </h2>
+      <button onClick={()=> window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}>I WIN</button>
+     
     <div className={"file full"}>
       <h2>Cluedo</h2>
       <Button onClick={startGame} value="Start een nieuw spel" />

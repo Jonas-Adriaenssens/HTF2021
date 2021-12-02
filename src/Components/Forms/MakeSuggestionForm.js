@@ -17,10 +17,10 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
   const { settings } = useSettings();
   const clues  = useContext(CluesContext);
 
-  const [weapon, setWeapon] = useState();
-  const [suspect, setSuspect] = useState();
+  const [weapon, setWeapon] = useState(0);
+  const [suspect, setSuspect] = useState(0);
   const [showGuess, isShowGuess] = useState(false);
-  const [guessResult, setGuessResult] = useState();
+  const [guessResult, setGuessResult] = useState(0);
 
   const filteredClues = (filterWord) => {
     return clues.filter(clue => clue.type == filterWord)
@@ -93,11 +93,7 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
 
 
       }
-      
     </div>
-
-    
-
-        
+ 
   );
 };
