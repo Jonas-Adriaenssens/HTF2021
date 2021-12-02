@@ -17,8 +17,10 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
   const { settings } = useSettings();
   const clues  = useContext(CluesContext);
 
-  const [weapon, setWeapon] = useState(0);
-  const [suspect, setSuspect] = useState(0);
+  const [weapon, setWeapon] = useState();
+  const [suspect, setSuspect] = useState();
+  const [showGuess, isShowGuess] = useState(false);
+  const [guessResult, setGuessResult] = useState();
 
   const filteredClues = (filterWord) => {
     return clues.filter(clue => clue.type == filterWord)
@@ -26,6 +28,7 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
 
   const makeSuggestion = () => {
 
+    isShowGuess(true); 
 
     const bodyFormData = {
       "room" : selectedRoom,
@@ -47,7 +50,10 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
     })
       .then(function (response) {
         //handle success
-        console.log(response);
+        console.log(response.data);
+        setGuessResult(response.data)
+
+
       })
       .catch(function (response) {
         //handle error
@@ -57,7 +63,7 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
   }
 
 
-  return (
+  return  (
     <div>
       <h2>Maak een suggestie</h2>
     <h4>Weapon: </h4>
@@ -76,6 +82,22 @@ export const MakeSuggestionForm = ({ gameKey, selectedRoom }) => {
 
      <Button onClick={makeSuggestion} value="Submit to the overlord"/>     
 
+
+      { showGuess &&
+      
+        <div>
+          <p>Result: </p>
+          <p>Incorrect: {guessResult.incorrect}</p>
+          <p>Correct: {guessResult.num_correct}</p>
+        </div>
+
+
+      }
+      
     </div>
+
+    
+
+        
   );
 };
