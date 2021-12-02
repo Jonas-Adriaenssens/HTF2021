@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
+import RoomItem from "../Clues/RoomItem";
+import { CluesContext } from "../Main";
 
 /*
    HET HUIS
@@ -7,7 +9,21 @@ import React from "react";
 */
 
 export const Mansion = ({ onSelectRoom }) => {
+
+
+    const clues  = useContext(CluesContext)
+ 
   return (
-    <div>Bouw het huis en gebruik onSelectRoom bij klikken op een kamer.</div>
+    <div>
+      <div>Bouw het huis en gebruik onSelectRoom bij klikken op een kamer.</div>
+
+      
+        {clues.map((clue) => (
+         <div key={clue.id} onClick={onSelectRoom}>
+          <RoomItem  key={clue.id} clue={clue}/>
+         </div>
+        )
+        )}
+  </div>
   );
 };
